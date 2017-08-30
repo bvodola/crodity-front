@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
+import {StyleRoot} from 'radium';
+import data from './dummy_data.js';
 
 import { default as Theme } from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
-
 import IconButton from 'material-ui/IconButton';
 import AppBar from 'material-ui/AppBar';
 
-import ProductList from './store/components/ProductList.js';
+import StoreFront from './components/store/StoreFront.js';
 
 const theme = getMuiTheme({
   palette: {
@@ -17,17 +18,21 @@ const theme = getMuiTheme({
 class App extends Component {
   render() {
     return (
-      <Theme muiTheme={theme}>
-        <div>
-          <AppBar
-            title="Meus Anúncios"
-            iconElementLeft={<IconButton iconClassName="material-icons">arrow_back</IconButton>}
-          />
-          <div style={{marginTop: '8px'}} className='container'>
-            <ProductList />
-          </div>
-        </div>
-      </Theme>
+      <div style={{background: '#f6f6f6'}}>
+        <StyleRoot>
+          <Theme muiTheme={theme}>
+              <div>
+                <AppBar
+                  title="Meus Anúncios"
+                  iconElementLeft={<IconButton iconClassName="material-icons">arrow_back</IconButton>}
+                />
+                <div style={{marginTop: '8px'}} className='container'>
+                  <StoreFront store={data.store} products={data.products} />
+                </div>
+            </div>
+          </Theme>
+        </StyleRoot>
+      </div>
     );
   }
 }
