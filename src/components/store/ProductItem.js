@@ -1,11 +1,15 @@
 import React from 'react';
+import Radium from 'radium';
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 import FlatButton from 'material-ui/FlatButton';
 import ItemMenu from './ItemMenu';
 
+const web = '@media(min-width: 992px)';
+
 const style = {
   card: {
-    marginBottom: '5px'
+    marginBottom: '5px',
+    position: 'relative'
   },
   product: {
     content: {
@@ -23,12 +27,18 @@ const style = {
       container: {
         height: '30vw',
         overflow: 'hidden',
-        position: 'relative'
+        position: 'relative',
+        [web]: {
+          height: '20vw'
+        }
       },
       image: {
         height: '30vw',
         marginLeft: '50%',
-        transform: 'translateX(-50%)'
+        transform: 'translateX(-50%)',
+        [web]: {
+          height: '20vw'
+        }
       }
 
     },
@@ -44,12 +54,51 @@ const style = {
     menu: {
       textAlign: 'right'
     }
+  },
+  overlay: {
+    container: {
+      width: '100%',
+      height: '100%',
+      background: 'rgba(0,0,0,0.3)',
+      zIndex: 9999,
+      padding: 0,
+      position: 'absolute',
+    },
+    text: {
+      transform: 'rotate(-31deg)',
+      top: '45%',
+      position: 'absolute',
+      float: 'left',
+      textAlign: 'center',
+      zIndex: 1,
+      width: '100%',
+      color: 'rgba(255,255,255,0.8)',
+      fontWeight: 'bold',
+      fontSize: '20px',
+      [web]: {
+        fontSize: '30px'
+      }
+    }
   }
 }
 
 const ProductItem = (props) => {
+
+  let soldOut = props.product.sold_out;
+
+  let overlay = () => {
+    return soldOut ?
+    (
+      <div style={style.overlay.container}>
+        <span style={style.overlay.text}>ESGOTADO</span>
+      </div>
+    ) :
+    null;
+  }
+
   return(
     <Card style={style.card}>
+      {overlay()}
       <div style={style.product.media.container}>
         <span style={style.product.likes} >{props.product.likes} &#9829;</span>
         <img src={props.product.image} alt="" style={style.product.media.image} />
@@ -70,4 +119,4 @@ const ProductItem = (props) => {
   )
 }
 
-export default ProductItem;
+export default Radium(ProductItem);

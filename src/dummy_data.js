@@ -16,7 +16,8 @@ const products = [
     title: 'Notebook Acer',
     price: 'R$ 120,00',
     image: 'https://ludu-assets.s3.amazonaws.com/lesson-content/Y1UqoUn9EGQiRgTbONSM',
-    likes: 133
+    likes: 133,
+    sold_out: true
   },
   {
     title: 'Relógio Muito Interessante',

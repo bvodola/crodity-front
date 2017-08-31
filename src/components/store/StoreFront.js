@@ -13,6 +13,10 @@ import Grade from '../Grade';
 /* Styles */
 /* ****** */
 const web = '@media(min-width: 992px)';
+const smallUp = web;
+const smallToLarge = '@media(min-width: 992px) and (max-width: 1499px)';
+const large = '@media(min-width: 1200px) and (max-width: 1499px)';
+const largeUp = '@media(min-width: 1200px)';
 
 const style = {
 
@@ -29,15 +33,21 @@ const style = {
       width: '100%',
       textAlign: 'center',
       fontFamily: 'Roboto',
-      [web]: {
-        width: '40%',
-        textAlign: 'left',
+      [large]: {
+        width: '35%',
         marginTop: '-55px'
+      },
+      [largeUp]: {
+        textAlign: 'left',
+        width: '40%'
       }
     },
     title: {
       fontWeight: 100,
-      margin: 0
+      margin: 0,
+      [large]: {
+        fontSize: '25px'
+      }
     },
     description: {
       color: '#aaa',
@@ -49,9 +59,12 @@ const style = {
     position: 'relative',
     float: 'left',
     width: '100%',
-    [web]: {
-      float: 'right',
-      width: '40%'
+    [large]: {
+      width: '45%'
+    },
+    [largeUp]: {
+      width: '40%',
+      float: 'right'
     }
   }
 }

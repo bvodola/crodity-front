@@ -2,6 +2,8 @@ import React from 'react';
 import Radium from 'radium';
 
 const web = '@media(min-width: 992px)';
+const large = '@media(min-width: 1200px) and (max-width: 1499px)';
+const largeUp = '@media(min-width: 1200px)';
 
 const style = {
   container: {
@@ -22,11 +24,14 @@ const style = {
     border: 0,
     fontFamily: 'Roboto',
     marginTop: '-2px',
-    [web]: {
+    [largeUp]: {
       background: '#eee',
       padding: '4px 7px 7px 7px',
       borderRadius: '4px',
       width: '300px'
+    },
+    [large]: {
+      width: '250px'
     }
   },
   searchIcon: {
@@ -44,7 +49,7 @@ const style = {
     float: 'right',
     position: 'relative',
     marginLeft: '5px',
-    [web]: {
+    [largeUp]: {
       display: 'inline'
     }
   }

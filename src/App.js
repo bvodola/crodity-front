@@ -27,7 +27,12 @@ class App extends Component {
                   iconElementLeft={<IconButton iconClassName="material-icons">arrow_back</IconButton>}
                 />
                 <div style={{marginTop: '8px'}} className='container'>
-                  <StoreFront store={data.store} products={data.products} />
+                  <div className="row">
+                    <div className="col offset-l3 l8">
+                      <StoreFront store={data.store} products={data.products} />
+                    </div>
+                  </div>
+
                 </div>
             </div>
           </Theme>

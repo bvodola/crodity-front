@@ -2,6 +2,8 @@ import React from 'react';
 import Radium from 'radium';
 
 const web = '@media(min-width: 992px)';
+const large = '@media(min-width: 1200px) and (max-width: 1499px)';
+const largeUp = '@media(min-width: 1200px)';
 
 const style = {
   container: {
@@ -14,11 +16,15 @@ const style = {
     overflow: 'hidden',
     borderRadius: '100%',
     border: '5px solid #eee',
-    [web]: {
+    [largeUp]: {
       width: '140px',
       height: '140px',
       margin: '-80px 20px 0 20px',
       transform: 'translateX(0)',
+    },
+    [large]: {
+      width: '100px',
+      height: '100px',
     }
   },
   image: {
