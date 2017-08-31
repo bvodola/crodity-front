@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {StyleRoot} from 'radium';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import data from './dummy_data.js';
 
 import { default as Theme } from 'material-ui/styles/MuiThemeProvider';
@@ -8,6 +9,7 @@ import IconButton from 'material-ui/IconButton';
 import AppBar from 'material-ui/AppBar';
 
 import StoreFront from './components/store/StoreFront.js';
+import SingleProduct from './components/store/SingleProduct.js';
 
 const theme = getMuiTheme({
   palette: {
@@ -18,7 +20,7 @@ const theme = getMuiTheme({
 class App extends Component {
   render() {
     return (
-      <div style={{background: '#f6f6f6'}}>
+      <div>
         <StyleRoot>
           <Theme muiTheme={theme}>
               <div>
@@ -29,7 +31,13 @@ class App extends Component {
                 <div style={{marginTop: '8px'}} className='container'>
                   <div className="row">
                     <div className="col offset-l3 l8">
-                      <StoreFront store={data.store} products={data.products} />
+                      <Router>
+                        <Switch>
+                          <Route path='/product-list' render={() => <StoreFront store={data.store} products={data.products} />} />
+                          <Route path='/single-product' render={() => <SingleProduct product={data.products[0]} />} />
+                        </Switch>
+                      </Router>
+
                     </div>
                   </div>
 

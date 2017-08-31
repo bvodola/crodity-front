@@ -1,7 +1,6 @@
 import React from 'react';
 import Radium from 'radium';
 
-const web = '@media(min-width: 992px)';
 const large = '@media(min-width: 1200px) and (max-width: 1499px)';
 const largeUp = '@media(min-width: 1200px)';
 

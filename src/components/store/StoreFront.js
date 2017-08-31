@@ -1,8 +1,6 @@
 import React from 'react';
 import Radium from 'radium';
 
-import FontIcon from 'material-ui/FontIcon';
-
 import ProductList from './ProductList';
 import SearchBox from '../SearchBox';
 import Avatar from '../Avatar';
@@ -12,9 +10,6 @@ import Grade from '../Grade';
 /* ****** */
 /* Styles */
 /* ****** */
-const web = '@media(min-width: 992px)';
-const smallUp = web;
-const smallToLarge = '@media(min-width: 992px) and (max-width: 1499px)';
 const large = '@media(min-width: 1200px) and (max-width: 1499px)';
 const largeUp = '@media(min-width: 1200px)';
 
@@ -25,6 +20,27 @@ const style = {
     margin: '8px 0 8px 0',
     boxSshadow: '1px 1px 3px #ddd',
     borderRadius: '2px'
+  },
+  avatar: {
+    margin: '-60px 0 0 50%',
+    width: '100px',
+    height: '100px',
+    transform: 'translateX(-50%)',
+    position: 'relative',
+    float: 'left',
+    overflow: 'hidden',
+    borderRadius: '100%',
+    border: '5px solid #eee',
+    [largeUp]: {
+      width: '140px',
+      height: '140px',
+      margin: '-80px 20px 0 20px',
+      transform: 'translateX(0)',
+    },
+    [large]: {
+      width: '100px',
+      height: '100px',
+    }
   },
   info: {
     container: {
@@ -86,7 +102,9 @@ const StoreFront = (props) => {
       <div className="row" style={style.header}>
 
         {/* Avatar */}
-        <Avatar src={store.avatar} />
+        <div>
+          <Avatar src={store.avatar} />
+        </div>
 
         {/* Store Info */}
         <div style={style.info.container}>

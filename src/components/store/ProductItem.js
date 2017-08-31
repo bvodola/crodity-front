@@ -1,7 +1,6 @@
 import React from 'react';
 import Radium from 'radium';
-import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
-import FlatButton from 'material-ui/FlatButton';
+import { Card } from 'material-ui/Card';
 import ItemMenu from './ItemMenu';
 
 const web = '@media(min-width: 992px)';
