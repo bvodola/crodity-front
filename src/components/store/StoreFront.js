@@ -28,9 +28,6 @@ const style = {
     transform: 'translateX(-50%)',
     position: 'relative',
     float: 'left',
-    overflow: 'hidden',
-    borderRadius: '100%',
-    border: '5px solid #eee',
     [largeUp]: {
       width: '140px',
       height: '140px',
@@ -49,13 +46,14 @@ const style = {
       width: '100%',
       textAlign: 'center',
       fontFamily: 'Roboto',
-      [large]: {
-        width: '35%',
-        marginTop: '-55px'
-      },
+      marginTop: '25px',
       [largeUp]: {
         textAlign: 'left',
-        width: '40%'
+        width: '40%',
+        marginTop: '-40px'
+      },
+      [large]: {
+        width: '35%'
       }
     },
     title: {
@@ -102,7 +100,7 @@ const StoreFront = (props) => {
       <div className="row" style={style.header}>
 
         {/* Avatar */}
-        <div>
+        <div style={style.avatar}>
           <Avatar src={store.avatar} />
         </div>
 

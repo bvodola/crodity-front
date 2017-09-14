@@ -12,6 +12,7 @@ const style = {
 const Grade = (props) => {
 
   let { value } = props;
+  let { container, icon } = props.style || {};
   let stars = [];
 
   for(let i=0; i<5; i++) {
@@ -21,11 +22,11 @@ const Grade = (props) => {
   }
 
   return(
-    <p style={style.container}>
+    <div style={{ ...style.container, ...container}}>
       {stars.map((star) => (
-        <span style={style.icon} className='material-icons'>{star}</span>
+        <span style={{ ...style.icon, icon }} className='material-icons'>{star}</span>
       ))}
-    </p>
+    </div>
   )
 };
 

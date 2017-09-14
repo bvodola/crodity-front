@@ -21,7 +21,7 @@ const products = [
   },
   {
     title: 'Relógio Muito Interessante',
-    price: 'R$ 120,00',
+    price: 'R$ 130,00',
     image: 'https://cdn.shopify.com/s/files/1/0377/2037/products/Mens37.Front_e0435337-82ea-4472-86aa-0e34e1b2c3e8_grande.jpg?v=1501531060',
     likes: 133
   },
