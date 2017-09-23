@@ -18,7 +18,7 @@ const style = {
   header: {
     backgroundColor: '#fff',
     margin: '8px 0 8px 0',
-    boxSshadow: '1px 1px 3px #ddd',
+    boxShadow: '1px 1px 3px #ddd',
     borderRadius: '2px'
   },
   avatar: {

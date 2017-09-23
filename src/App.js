@@ -10,6 +10,7 @@ import AppBar from 'material-ui/AppBar';
 
 import StoreFront from './components/store/StoreFront.js';
 import SingleProduct from './components/store/SingleProduct.js';
+import Profile from './components/social/Profile.js';
 
 const theme = getMuiTheme({
   palette: {
@@ -33,6 +34,7 @@ class App extends Component {
                     <div className="col offset-l3 l8">
                       <Router>
                         <Switch>
+                          <Route path='/profile' render={() => <Profile />} />
                           <Route path='/product-list' render={() => <StoreFront store={data.store} products={data.products} />} />
                           <Route path='/single-product' render={() => <SingleProduct product={data.products[0]} />} />
                         </Switch>

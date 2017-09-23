@@ -4,8 +4,35 @@ import data from '../../dummy_data';
 
 import Avatar from '../Avatar';
 import Grade from '../Grade';
+import Grid from '../Grid';
 
 import RaisedButton from 'material-ui/RaisedButton';
+import styled from 'styled-components';
+
+const Select = styled.select`
+  background-color: #ccc
+  border: none
+  border-radius: 3px
+  box-shadow: 1px 1px 3px #aaa
+  font: inherit
+  padding: 0.5em 2em 0.5em 1em
+  margin: 0
+  -webkit-box-sizing: border-box
+  -moz-box-sizing: border-box
+  box-sizing: border-box
+  -webkit-appearance: none
+  -moz-appearance: none
+  display: block
+  background-image: linear-gradient(45deg, transparent 50%, white 50%), linear-gradient(135deg, white 50%, transparent 50%)
+  background-position: calc(100% - 18px) calc(1em + 0px), calc(100% - 9px) calc(1em + 0px)
+  background-size: 8px 6px, 9px 7px
+  background-repeat: no-repeat
+  font-family: 'Roboto'
+  color: #fff
+  margin-top: 7px
+  margin-left: 50%
+  transform: translateX(-50%)
+`;
 
 const style = {
   container: {
@@ -47,6 +74,7 @@ const style = {
     marginBottom: '20px'
   }
 }
+
 
 const SingleProduct = () => {
   let { products, store } = data;
@@ -104,9 +132,9 @@ const SingleProduct = () => {
             </div>
             <div className="col s4">
               Quantidade
-              <select className='select' name="" id="">
+              <Select className='select' name="" id="">
                 <option value="">01</option>
-              </select>
+              </Select>
             </div>
           </div>
             <RaisedButton fullWidth label="Comprar" primary={true} style={{height: '92px'}} buttonStyle={{lineHeight: '92px'}} labelStyle={{fontSize: '32px', textTransform: 'none  '}} />

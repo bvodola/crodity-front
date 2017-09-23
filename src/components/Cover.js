@@ -10,8 +10,9 @@ const style = {
     overflow: 'hidden',
     height: '40vw',
     position: 'relative',
+    boxShadow: 'inset 0 -75px 75px -50px rgba(0,0,0,0.8)',
     [web]: {
-      height: '30vw',
+      height: '20vw',
       marginTop: '0',
     }
   },
@@ -22,7 +23,8 @@ const style = {
     right: '-9999px',
     top: '-9999px',
     bottom: '-9999px',
-    margin: 'auto'
+    margin: 'auto',
+    zIndex: '-1'
   }
 }
 
