@@ -1,44 +1,31 @@
 import React from 'react';
 import Radium from 'radium';
 
+import Card from 'material-ui/Card';
+
 import Cover from '../Cover';
 import Avatar from '../Avatar';
+import CardTitle from '../CardTitle';
+import PhotoGallery from '../PhotoGallery';
+import UserGallery from '../UserGallery';
 
-/* ****** */
-/* Styles */
-/* ****** */
+import HeaderMenu from './HeaderMenu';
+
+// ======
+// Styles
+// ======
 const large = '@media(min-width: 1200px) and (max-width: 1499px)';
 const largeUp = '@media(min-width: 1200px)';
-const cardLayout = {
-  backgroundColor: '#fff',
-  boxShadow: '1px 1px 3px #ddd',
-  borderRadius: '2px',
-  fontFamily: 'Roboto'
-}
+const mediumDown = '@media(max-width: 1199px)';
 
 const style = {
-  headerMenu: {
-    container: {
-      margin: '-70px 0 0 0',
-      ...cardLayout,
-      paddingRight: '10px',
-      height: '54px'
-    },
-    item: {
-      margin: '7px 40px 7px 0',
-      padding: '10px 20px',
-      display: 'inline-block',
-      fontFamily: 'Roboto',
-      fontSize: '14px',
-      textDecoration: 'none',
-      color: '#ffca43',
-      textTransform: 'uppercase'
-    },
-    activeItem: {
-      borderTopLeftRadius: '5px',
-      borderTopRightRadius: '5px',
-      backgroundColor: '#f6f6f6',
-      boxShadow: '0px 13px #f6f6f6, inset 2px 2px 2px #eee'
+  header: {
+    position: 'relative',
+    marginTop: '-70px',
+    marginBottom: '70px',
+    [mediumDown]: {
+      marginTop: 0,
+      marginBottom: 0
     }
   },
   avatar: {
@@ -46,12 +33,12 @@ const style = {
     width: '100px',
     height: '100px',
     transform: 'translateX(-50%)',
-    position: 'relative',
-    float: 'left',
+    position: 'absolute',
+    zIndex: 1,
     [largeUp]: {
       width: '160px',
       height: '160px',
-      margin: '-80px 20px 0 20px',
+      margin: '-15px 20px 0 20px',
       transform: 'translateX(0)',
     },
     [large]: {
@@ -66,11 +53,12 @@ const style = {
       width: '100%',
       textAlign: 'center',
       fontFamily: 'Roboto',
-      marginTop: '25px',
+      marginTop: '55px',
       [largeUp]: {
+        marginTop: '25px',
         textAlign: 'left',
         width: '40%',
-        marginTop: '-55px'
+        marginTop: '20px'
       },
       [large]: {
         width: '35%'
@@ -78,66 +66,194 @@ const style = {
     },
     title: {
       fontWeight: 100,
-      color: '#fff',
+      color: '#000',
       margin: 0,
       [large]: {
         fontSize: '25px'
+      },
+      [largeUp]: {
+        color: '#fff'
       }
     }
   },
+  sideIcons: {
+    container: {
+      position: 'absolute',
+      color: '#fff',
+      left: '5px',
+      top: '-13px',
+      [largeUp]: {
+        left: 'unset',
+        right: '10px',
+        top: '20px',
+        color: '#ffca43'
+      }
+    },
+    icon: {
+      marginLeft: '10px',
+      cursor: 'pointer',
+      backgroundColor: '#ffca43',
+      borderRadius: '100%',
+      padding: '7px',
+      [largeUp]: {
+        backgroundColor: 'transparent'
+      }
+    }
+  },
+  infoAndIcons: {
+    position: 'relative',
+    float: 'left',
+    width: '100%',
+    height: '77px',
+    [largeUp]: {
+      width: 'calc(100% - 210px)',
+      marginLeft: '210px'
+    },
+    [large]: {
+      width: 'calc(100% - 150px)',
+      marginLeft: '150px'
+    }
+  },
+
+  mainContainer: {
+    position: 'absolute',
+    width: '100%',
+    marginTop: '8px',
+    marginBottom: '16px'
+  },
   description: {
-    fontWeight: 100,
-    fontSize: '12px',
-    ...cardLayout
+    padding: '32px',
+    fontSize: '14px',
+    lineHeight: '28px'
+  },
+  descriptionIcon: {
+    fontSize: '17px',
+    transform: 'translateY(15%)',
+    marginRight: '10px'
+  },
+
+  cardTitle: {
+    container: {
+      padding: '10px',
+      margin: '8px 0 0 0',
+      fontSize: '20px'
+    },
+    icon: {
+      color: '#ffca43',
+      transform: 'translateY(16%)',
+      marginRight: '5px'
+    },
+    subtitle: {
+      color: '#aaa',
+      fontSize: '12px',
+      marginLeft: '5px'
+    }
   }
 }
 
-const Profile = () => (
-  <div>
-    {/* Cover */}
-    <div className="row">
-      <Cover src='https://static.pexels.com/photos/20974/pexels-photo.jpg' />
-    </div>
+// =========
+// Component
+// =========
+class Profile extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      open: false
+    }
+  }
 
-    <div className="row">
+  handleTouchTap(event) {
+    // This prevents ghost click.
+    event.preventDefault();
 
-      {/* Avatar */}
-      <div style={style.avatar}>
-        <Avatar src='https://i.pinimg.com/originals/fc/03/f6/fc03f6900db30feae108d558690ca748.jpg' />
-      </div>
+    this.setState({
+      open: true,
+      anchor: event.currentTarget,
+    });
+  };
 
-      {/* Store Info */}
-      <div style={style.info.container}>
-        <h1 style={style.info.title}>Sofia Vergara</h1>
-      </div>
+  render() {
+    const { user } = this.props;
 
-    </div>
-
-    {/* Header Menu */}
-    <div className="row" style={style.headerMenu.container}>
-      <a style={{...style.headerMenu.item, ...style.headerMenu.activeItem}} href="#">Perfil</a>
-      <a style={style.headerMenu.item} href="#">Followers</a>
-      <a style={style.headerMenu.item} href="#">Follows</a>
-      <a style={style.headerMenu.item} href="#">Fotos</a>
-      <a style={style.headerMenu.item} href="#">Mais</a>
-    </div>
-
-    <div className="row">
-      <div className="col l5">
-        <div style={style.description}>
-          Fotógrafa profissional<br/>
-          Universidade das Américas<br/>
-          São Paulo - SP<br/>
-          Solteira<br/>
-          Tipo de usuário: Premium
+    return(
+      <div>
+        {/* Cover */}
+        <div className="row">
+          <Cover src={user.cover} />
         </div>
-      </div>
-      <div className="col l7">
+
+        <div className="row" style={style.header}>
+          {/* Avatar */}
+          <div style={style.avatar}>
+            <Avatar src={user.avatar} />
+          </div>
+
+          <div style={style.infoAndIcons}>
+            {/* Store Info */}
+            <div style={style.info.container}>
+              <h1 style={style.info.title}>{user.name}</h1>
+            </div>
+
+            {/* Side Icons */}
+            <div style={style.sideIcons.container}>
+              <span style={style.sideIcons.icon} className="material-icons">remove_red_eye</span>
+              <span style={style.sideIcons.icon} className="material-icons">settings</span>
+            </div>
+          </div>
+
+        </div>
+
+        {/* Header Menu */}
+
+        <HeaderMenu followers={user.followers} following={user.following} total_media={user.media.total} />
+
+        <div className="row" style={style.mainContainer}>
+          <div className="col l5">
+
+            {/* Descrition Card */}
+            <Card>
+              <div style={style.description}>
+              {user.info.work ? (<span><span style={style.descriptionIcon} className="material-icons">work</span> {user.info.work} <br/></span>) : ''}
+              {user.info.school ? (<span><span style={style.descriptionIcon} className="material-icons">school</span>{user.info.school}<br/></span>): ''}
+              {user.info.location ? (<span><span style={style.descriptionIcon} className="material-icons">location_on</span>{user.info.location}<br/></span>): ''}
+              {user.info.relationship_status ? (<span><span style={style.descriptionIcon} className="material-icons">favorite</span>{user.info.relationship_status}<br/></span>): ''}
+              {user.type ? (<span><span style={style.descriptionIcon} className="material-icons">person</span>Tipo de usuário: {user.type}</span>): ''}
+              </div>
+            </Card>
+
+            {/* Photos Card */}
+            <Card>
+              <div>
+                <CardTitle
+                  icon={'insert_photo'}
+                  title={'Fotos'}
+                  subtitle={68}
+                />
+                <PhotoGallery media={user.media} />
+              </div>
+            </Card>
+
+            <Card>
+              <div>
+                <CardTitle
+                  icon={'insert_photo'}
+                  title={'Seguidores'}
+                  subtitle={2032}
+                />
+                <UserGallery users={user.friends} />
+              </div>
+            </Card>
+
+          </div>
+          <div className="col l7">
+          </div>
+        </div>
 
       </div>
-    </div>
+    );
+  }
+}
 
-  </div>
-);
+
 
 export default Radium(Profile);

@@ -34,7 +34,7 @@ class App extends Component {
                     <div className="col offset-l3 l8">
                       <Router>
                         <Switch>
-                          <Route path='/profile' render={() => <Profile />} />
+                          <Route path='/profile' render={() => <Profile user={data.user} />} />
                           <Route path='/product-list' render={() => <StoreFront store={data.store} products={data.products} />} />
                           <Route path='/single-product' render={() => <SingleProduct product={data.products[0]} />} />
                         </Switch>

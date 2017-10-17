@@ -4,7 +4,6 @@ import data from '../../dummy_data';
 
 import Avatar from '../Avatar';
 import Grade from '../Grade';
-import Grid from '../Grid';
 
 import RaisedButton from 'material-ui/RaisedButton';
 import styled from 'styled-components';
