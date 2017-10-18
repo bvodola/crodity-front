@@ -124,4 +124,127 @@ const products = [
   },
 ];
 
-export default { store, products, user };
+const orders = [
+  {
+    _id: 'y78ady7d8ah8gdfa8njh7829m',
+    order_date: new Date('05/08/2017'),
+    status: 0,
+    unique_id: 84590389,
+    total_purchase: 1999.90,
+    ads: [
+      {
+        name: 'Notebook Acer',
+        price: '1999,90',
+      },
+    ],
+    buyer: {
+      name: 'Cara Delevingne',
+      avatar: 'https://vg-images.condecdn.net/image/ooXzj57Ml4Q/crop/405/portrait',
+      info: {
+        location: 'São Paulo/SP'
+      },
+    }
+  },
+  {
+    _id: 'y78ady7d8ah8gdfa8njh78',
+    order_date: new Date('05/08/2017'),
+    status: 1,
+    unique_id: 84590389,
+    total_purchase: 1999.90,
+    ads: [
+      {
+        name: 'Notebook Acer',
+        price: '1999,90',
+      },
+    ],
+    buyer: {
+      name: 'Cara Delevingne',
+      avatar: 'https://vg-images.condecdn.net/image/ooXzj57Ml4Q/crop/405/portrait',
+      info: {
+        location: 'São Paulo/SP'
+      },
+    }
+  },
+  {
+    _id: 'y78ady7d8ah8gdfa8njh782',
+    order_date: new Date('05/08/2017'),
+    status: 2,
+    unique_id: 84590389,
+    total_purchase: 1999.90,
+    ads: [
+      {
+        name: 'Notebook Acer',
+        price: '1999,90',
+      },
+    ],
+    buyer: {
+      name: 'Cara Delevingne',
+      avatar: 'https://vg-images.condecdn.net/image/ooXzj57Ml4Q/crop/405/portrait',
+      info: {
+        location: 'São Paulo/SP'
+      },
+    }
+  },
+  {
+    _id: 'y78ady7d8ah8gdfa8njh7829',
+    order_date: new Date('05/08/2017'),
+    status: 3,
+    unique_id: 84590389,
+    total_purchase: 1999.90,
+    ads: [
+      {
+        name: 'Notebook Acer',
+        price: '1999,90',
+      },
+    ],
+    buyer: {
+      name: 'Cara Delevingne',
+      avatar: 'https://vg-images.condecdn.net/image/ooXzj57Ml4Q/crop/405/portrait',
+      info: {
+        location: 'São Paulo/SP'
+      },
+    }
+  },
+  {
+    _id: 'y78ady7d8ah8gdfa8njh7',
+    order_date: new Date('05/08/2017'),
+    status: 4,
+    unique_id: 84590389,
+    total_purchase: 1999.90,
+    ads: [
+      {
+        name: 'Notebook Acer',
+        price: '1999,90',
+      },
+    ],
+    buyer: {
+      name: 'Cara Delevingne',
+      avatar: 'https://vg-images.condecdn.net/image/ooXzj57Ml4Q/crop/405/portrait',
+      info: {
+        location: 'São Paulo/SP'
+      },
+    }
+  },
+  {
+    _id: 'y78ady7d8ah8gdfgju8sfjgf9s9',
+    order_date: new Date('05/08/2017'),
+    status: 5,
+    unique_id: 84590389,
+    total_purchase: 1999.90,
+    ads: [
+      {
+        name: 'Notebook Acer',
+        price: '1999,90',
+      },
+    ],
+    buyer: {
+      name: 'Cara Delevingne',
+      avatar: 'https://vg-images.condecdn.net/image/ooXzj57Ml4Q/crop/405/portrait',
+      info: {
+        location: 'São Paulo/SP'
+      },
+    }
+  },
+];
+
+export default { store, products, user, orders };

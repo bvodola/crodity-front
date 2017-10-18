@@ -11,6 +11,7 @@ import AppBar from 'material-ui/AppBar';
 import StoreFront from './components/store/StoreFront.js';
 import SingleProduct from './components/store/SingleProduct.js';
 import Profile from './components/social/Profile.js';
+import Orders from './components/dashboard/Orders';
 
 const theme = getMuiTheme({
   palette: {
@@ -37,6 +38,7 @@ class App extends Component {
                           <Route path='/profile' render={() => <Profile user={data.user} />} />
                           <Route path='/product-list' render={() => <StoreFront store={data.store} products={data.products} />} />
                           <Route path='/single-product' render={() => <SingleProduct product={data.products[0]} />} />
+                          <Route path='/orders' render={() => <Orders orders={data.orders} />} />
                         </Switch>
                       </Router>
 
